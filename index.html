@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Walantu – Find Trusted Professionals</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles/reset.css" />
+  <link rel="stylesheet" href="styles/styles.css" />
+
+  <!-- (Optional) Icons for social links – uncomment if you use Font Awesome
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  -->
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav aria-label="Primary">
+    <!-- Mobile sidebar -->
+    <ul class="sidebar" role="menu">
+      <li>
+        <a href="#" aria-label="Close menu" onclick="hideSidebar()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 96 960 960" aria-hidden="true" focusable="false">
+            <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/>
+          </svg>
+        </a>
+      </li>
+      <li><a href="#" role="menuitem">Home</a></li>
+      <li><a href="#" role="menuitem">How it works</a></li>
+      <li><a href="#" role="menuitem">Certification</a></li>
+      <li><a href="#" role="menuitem">Contact</a></li>
+      <li><a href="#" role="menuitem">Start Here</a></li>
+    </ul>
+
+    <!-- Desktop / tablet bar -->
+    <ul>
+      <li>
+        <a href="index.html" aria-label="Walantu home">
+          <picture>
+            <source media="(min-width: 800px)" srcset="images/logoFull.png" />
+            <img src="images/logoBlk.png" alt="Walantu logo" width="150" height="auto" />
+          </picture>
+        </a>
+      </li>
+      <li class="hideOnMobile"><a href="#">Home</a></li>
+      <li class="hideOnMobile"><a href="#">How it works</a></li>
+      <li class="hideOnMobile"><a href="#">Certification</a></li>
+      <li class="hideOnMobile"><a href="#">Contact</a></li>
+      <li class="hideOnMobile"><a href="#">Login</a></li>
+      <li class="menu-button">
+        <a href="#" aria-label="Open menu" onclick="showSidebar()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 96 960 960" aria-hidden="true" focusable="false">
+            <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/>
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Header / Hero -->
+  <header>
+    <div class="header-text">
+      <h1>Your trusted platform for professional services</h1>
+      <h2>We get the job done</h2>
+      <p>
+        Your one-stop platform for finding trusted professionals across various services.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam totam maiores
+        inventore omnis optio quis, unde dolor recusandae, obcaecati ullam molestiae
+        blanditiis voluptate vitae dolorum similique repudiandae cum? In, consectetur.
+      </p>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <!-- Intro -->
+    <section aria-labelledby="intro-title">
+      <div class="intro">
+        <h1 id="intro-title">Trusted professional delivery</h1>
+        <p>
+          Your one-stop platform for finding trusted professionals across various services.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam totam maiores
+          inventore omnis optio quis, unde dolor recusandae, obcaecati ullam molestiae
+          blanditiis voluptate vitae dolorum similique repudiandae cum? In, consectetur.
+        </p>
+      </div>
+
+      <!-- Articles -->
+      <article>
+        <h2>Why choose Walantu?</h2>
+        <p>
+          At Walantu, we connect you with vetted professionals for all your service needs.
+          Whether it's plumbing, electrical work, cleaning, or moving, our platform ensures
+          you find reliable experts quickly and easily. With transparent pricing and secure
+          booking, Walantu is your trusted partner for hassle-free service delivery.
+          <a href="#">Learn More</a>
+        </p>
+        <figure>
+          <picture>
+            <source media="(min-width: 800px)" srcset="images/workers-1.jpg" />
+            <img src="images/workers-1.jpg" alt="Team of trusted professionals" />
+          </picture>
+          <figcaption>Walantu connects you with vetted professionals for all your service needs.</figcaption>
+        </figure>
+      </article>
+
+      <article>
+        <h2>Fast, reliable, transparent</h2>
+        <p>
+          Book with confidence and track progress from start to finish. We prioritize safety,
+          quality, and clear communication at every step.
+          <a href="#">Learn More</a>
+        </p>
+        <figure>
+          <img src="images/workers-2.jpg" alt="Professional delivering high-quality work" />
+          <figcaption>Reliable professionals at transparent prices.</figcaption>
+        </figure>
+      </article>
+
+      <article>
+        <h2>Services that scale with you</h2>
+        <p>
+          From quick fixes to larger projects, find the right specialist for the job. We tailor
+          results to your needs and timelines.
+          <a href="#">Learn More</a>
+        </p>
+        <figure>
+          <img src="images/workers-3.jpg" alt="Technician working on a project" />
+          <figcaption>From quick jobs to major projects, we’ve got you covered.</figcaption>
+        </figure>
+      </article>
+    </section>
+
+    <!-- Get Started -->
+    <section class="form-section" aria-labelledby="get-started-title">
+      <h2 id="get-started-title">Get Started</h2>
+      <form action="#" method="post">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input id="name" name="name" type="text" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input id="email" name="email" type="email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="service">Service Needed:</label>
+          <select id="service" name="service" required>
+            <option value="">Select a service</option>
+            <option value="plumbing">Plumbing</option>
+            <option value="electrical">Electrical</option>
+            <option value="cleaning">Cleaning</option>
+            <option value="moving">Moving</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" aria-labelledby="testimonials-title">
+      
+
+      <article class="testimonial" aria-label="Testimonial from Jane D.">
+        <img src="images/man-1.jpg" alt="Portrait of Jane's service professional" />
+        <h3>Jane D.</h3>
+        <p>"Walantu made it so easy to find a reliable plumber. Highly recommend!"</p>
+      </article>
+
+      <article class="testimonial" aria-label="Testimonial from John">
+        <img src="images/man-3.jpg" alt="Portrait of John's service professional" />
+        <h3>John</h3>
+        <p>"The professionals I found through Walantu were top-notch and affordable."</p>
+      </article>
+
+      <article class="testimonial" aria-label="Testimonial from Sarah K.">
+        <img src="images/man-2.jpg" alt="Portrait of Sarah's service professional" />
+        <h3>Sarah K.</h3>
+        <p>"I love how user-friendly the platform is. I'll definitely use it again!"</p>
+      </article>
+
+      <article class="testimonial" aria-label="Testimonial from Michael R.">
+        <img src="images/man-4.jpg" alt="Portrait of Michael's service professional" />
+        <h3>Michael R.</h3>
+        <p>"Quick booking and transparent pricing. The whole process was smooth."</p>
+      </article>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <!-- Contact -->
+      <section class="footer-section contact" aria-labelledby="footer-contact">
+        <h2 id="footer-contact">Contact Us</h2>
+        <p>Email: <a href="mailto:info@walantu.com">info@walantu.com</a></p>
+        <p>Phone: <a href="tel:+1234567890">+123 456 7890</a></p>
+        <p>Address: 123 Main St, Anytown, USA</p>
+      </section>
+
+
+      
+
+      
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Walantu. All Rights Reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
