@@ -1,1 +1,2 @@
-# js-project-business-site# automatic-pancake
+# walantu
+African portal for handymen and women

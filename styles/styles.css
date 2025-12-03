@@ -431,3 +431,5 @@ button[type="submit"]:hover {
 @media (max-width: 600px) {
   footer { grid-template-columns: 1fr; }
 }
+
+
