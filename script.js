@@ -38,8 +38,10 @@ document.addEventListener('click', (e) => {
   const sidebar = getSidebar();
   if (!sidebar || !sidebar.classList.contains('is-open')) return;
 
-  const clickedInsideSidebar = sidebar.contains(e.target);
-  const clickedMenuButton = e.target.closest?.('.menu-button');
+  const target = e.target;
+  const clickedInsideSidebar = sidebar.contains(target);
+  const clickedMenuButton =
+    target && target.closest ? Boolean(target.closest('.menu-button')) : false;
   if (!clickedInsideSidebar && !clickedMenuButton) hideSidebar();
 });
 
