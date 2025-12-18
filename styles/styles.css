@@ -1,23 +1,35 @@
 /* =========================
    Base styles
    ========================= */
-:root { --page-max: 1200px; }
+:root {
+  --page-max: 1200px;
+  --text: #1f2937;
+  --muted: #64748b;
+  --brand: #5b2121;
+  --card-bg: #f5faff;
+  --card-border: rgba(200, 50, 50, 0.3);
+  --page-bg: #eaf2f7;
+  --section-gap: 1rem;
+}
 
 *, *::before, *::after { box-sizing: border-box; }
 
 html { font-size: 10px; } /* reduced from 12px */
 
 body {
-  font-size: 1.5rem;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji",
+    "Segoe UI Emoji";
   display: grid;
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 100%;
   width: 100%;
   height: 100%;
   margin: 0;
-  text-align: justify;      /* justify all text by default */
-  text-justify: inter-word; /* improve spacing */
+  text-align: left;
+  background: var(--page-bg);
 }
 
 h1 {
@@ -28,19 +40,24 @@ h1 {
 }
 
 h2 {
-  font-size: 2.8rem;
+  font-size: 2.4rem;
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  color: var(--brand);
   text-align: left;   /* do not justify */
+  margin: 0 0 1rem 0;
 }
 
-p { margin-bottom: 2rem; }
-a { color: #5b2121; }
+p { margin-bottom: 1.2rem; }
+a { color: var(--brand); }
 a:hover { color: rgb(82, 42, 15); text-decoration: none; }
 
 img {
   max-width: 100%;
   height: auto;
   display: block;
-  margin: 0 auto;
+  margin: 0;
 }
 
 /* =========================
@@ -53,15 +70,49 @@ nav, header, main, footer {
   position: relative;
 }
 
+/* Hero/header should be full-bleed (span full page width) */
+header {
+  max-width: none;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  border-radius: 0;
+}
+
+/* Keep hero text readable and aligned with the rest of the page width */
+.header-text {
+  max-width: var(--page-max);
+  margin-inline: auto;
+}
+
+/* Fade from hero image into page background */
+header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 64px;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(234, 242, 247, 0), var(--page-bg));
+}
+
 /* =========================
    Navigation
    ========================= */
 nav {
+  /* full-bleed nav background */
+  max-width: none;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
   background-color: white;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
 }
 nav ul {
   width: 100%;
+  max-width: var(--page-max);
+  margin-inline: auto;
   list-style: none;
   display: flex;
   justify-content: flex-end;
@@ -136,17 +187,36 @@ nav li:first-child { margin-right: auto; }
 header {
   background-color: #ffffff;
   color: #ffffff;
-  padding: 2rem;
+  padding: 0;
   background-image: url(../images/head-1.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: clamp(220px, 35vh, 420px);
+  min-height: clamp(260px, 55vh, 560px);
+  display: flex;
+  align-items: flex-end;
+}
+
+header .header-text {
+  padding: 2.4rem 2rem;
+  transform: translateY(-30%);
+}
+
+/* Reduce spacing between stacked hero headings */
+header .header-text h1 {
+  margin: 0;
+  line-height: 1.05;
+}
+header .header-text h1 + h1 {
+  margin-top: 0.4rem;
 }
 @media (max-width: 800px) {
   header {
-    padding: 1.2rem;
-    min-height: clamp(180px, 40vh, 360px);
+    min-height: clamp(220px, 55vh, 460px);
+  }
+  header .header-text {
+    padding: 1.6rem 1.2rem;
+    transform: translateY(-20%);
   }
 }
 
@@ -157,11 +227,12 @@ main {
   padding-block: 1.5rem;
   padding-inline: 2rem;
   max-width: var(--page-max);
-   background-color: #eaf2f7;                 /* very pale blue */
-  border: 1px solid rgba(250, 226, 226, 0.3);  /* faded red border */
-  padding: 2rem;
-  margin-block: 2rem;
-  border-radius: 6px;
+  background-color: transparent;
+  border: 0;
+  margin: 0 auto;
+  margin-block: 0 1.2rem; /* close gap with header */
+  padding: 1.2rem 2rem 1.6rem;
+  border-radius: 0;
   box-sizing: border-box;
 }
 main h1 {
@@ -175,23 +246,38 @@ intro {
 }
 
 main article {
-  margin-bottom: 1.25rem;
-  border-bottom: solid 1px #ccc;
-  padding: 1.25rem 0;
-  gap: 2rem;
-  background-color: #cbdff8;                 /* very pale blue */
-  border: 1px solid rgba(200, 50, 50, 0.3);  /* faded red border */
+  margin-bottom: 0;
+  border-bottom: 0;
   padding: 2rem;
-  margin-block: 2rem;
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  margin-block: 0;
   border-radius: 6px;
   box-sizing: border-box;
- 
+  text-align: left;
+}
+
+main article p { text-align: left; }
+
+main article figure {
+  margin: 1.2rem 0 0 0;
+}
+
+main article figure img,
+main article figure picture {
+  width: 100%;
+}
+
+main article img {
+  width: 100%;
+  border-radius: 6px;
 }
 
 figcaption {
   font: italic 1rem georgia, serif;
   color: #5b2121;
-  text-align: justify;
+  text-align: left;
+  margin-top: 0.6rem;
 }
 
 /* =========================
@@ -230,14 +316,64 @@ figcaption {
 }
 
 .intro { grid-column: 1 / -1; 
-   background-color: #f5faff;                 /* very pale blue */
-  border: 1px solid rgba(200, 50, 50, 0.3);  /* faded red border */
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
   padding: 2rem;
   
   border-radius: 6px;
   box-sizing: border-box;
+  margin-block: 0;
+  text-align: left;
 }
+.intro p { text-align: left; }
 .form-section { grid-column: 1 / -1; }
+
+/* Intro + articles: make them full-width, symmetrical cards (not the old 3-col grid) */
+main section.content-section {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--section-gap);
+  margin-block: 0;
+}
+
+/* Intro spans full width above the 3-column articles */
+main section.content-section .intro {
+  grid-column: 1 / -1;
+}
+
+main section.content-section article {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+main section.content-section article p {
+  margin: 0;
+}
+
+main section.content-section article figure {
+  margin: 0;
+  width: 100%;
+}
+
+main section.content-section article img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  main section.content-section {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  main section.content-section {
+    grid-template-columns: 1fr;
+  }
+}
 
 
 /* =========================
@@ -246,9 +382,9 @@ figcaption {
 main section {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 300px));
-  gap: 2rem;                 /* increased gap between columns */
+  gap: 1.5rem;
   justify-content: center;
-  margin-block: 1.25rem;
+  margin-block: var(--section-gap);
 }
 main section .card { overflow: hidden; text-align: justify; }
 main section .card img,
@@ -276,11 +412,11 @@ main section > img {
   margin-inline: auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 4 columns on desktop */
-  gap: 2rem;
-  background-color: #f5faff;                 /* very pale blue */
-  border: 1px solid rgba(200, 50, 50, 0.3);  /* faded red border */
+  gap: 1.5rem;
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
   padding: 2rem;
-  margin-block: 2rem;
+  margin-block: var(--section-gap);
   border-radius: 6px;
   box-sizing: border-box;
 }
@@ -288,7 +424,7 @@ main section > img {
   background: #ffffff;
   border-radius: 6px;
   padding: 1.5rem;
-  text-align: justify;
+  text-align: left;
   line-height: 1.6;
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
@@ -330,6 +466,14 @@ footer h3, footer h4 {
   font-weight: 700;
   text-align: left;               /* keep footer headings left-aligned */
 }
+footer h2 {
+  font-size: 1.6rem;
+  line-height: 1.2;
+  margin: 0 0 0.75rem 0;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
 footer p, footer li, footer a {
   color: #fff;
   opacity: 0.95;
@@ -343,23 +487,34 @@ footer li + li { margin-top: 0.5rem; }
 /* =========================
    Form
    ========================= */
+/* Make the form section match the "card" look of the other sections */
+main section.form-section {
+  display: block; /* override main section grid layout */
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  padding: 2rem;
+  margin-block: var(--section-gap);
+  box-sizing: border-box;
+}
+
 form {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 24px;
-  max-width: 1200px;                   /* room for 4 columns */
-  margin: 0 auto;
-  background: white;                   /* matches fieldset style */
-  box-shadow: 0 1px 3px rgba(50,50,93,0.15),
-              0 4px 6px rgba(112,157,199,0.15);
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  max-width: 100%;
+  margin: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 /* Title */
-h2 {
-  text-transform: uppercase;
-  font-size: 15px;
-  margin: 0 0 16px 0;
-  color: #525f75;
+form h2 {
+  text-transform: none;
+  font-size: 2.2rem;
+  margin: 0 0 1.2rem 0;
+  color: var(--brand);
+  letter-spacing: 0.01em;
 }
 
 /* Grid */
@@ -377,22 +532,26 @@ h2 {
 }
 
 label {
-  color: #8898aa;                      /* existing label color */
-  font-size: 12px;
-  letter-spacing: .02em;
+  color: var(--muted);
+  font-size: 1.2rem;
+  letter-spacing: 0.02em;
+  font-weight: 600;
 }
 
 /* Inputs */
 input, select, textarea, button {
-  font-size: 14px;
+  font-size: 1.4rem;
   padding: 10px 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
   outline: none;
 }
 
-input:valid { border: 2px solid green; }
-input:invalid { border: 2px solid red; }
+input, select, textarea { background: #fff; }
+input:focus, select:focus, textarea:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px rgba(91, 33, 33, 0.15);
+}
 
 textarea {
   resize: vertical;
@@ -406,8 +565,8 @@ textarea {
 
 /* Helper note link (GhanaPost GPS) */
 .helper {
-  font-size: 12px;
-  color: #8898aa;
+  font-size: 1.2rem;
+  color: var(--muted);
   margin-top: 4px;
 }
 
