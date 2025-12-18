@@ -220,6 +220,17 @@ header .header-text h1 + h1 {
   }
 }
 
+/* Extra small phones */
+@media (max-width: 375px) {
+  /* Reduce hero header text size by ~30% */
+  header .header-text h1 {
+    font-size: 2.1rem; /* 3rem * 0.7 */
+  }
+  header .header-text p {
+    font-size: 1.1rem;
+  }
+}
+
 /* =========================
    Main content
    ========================= */
