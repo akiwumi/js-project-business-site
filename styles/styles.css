@@ -231,6 +231,21 @@ header .header-text h1 + h1 {
   }
 }
 
+/* Extra small phones in landscape: push hero text down */
+@media (max-width: 375px) and (orientation: landscape) {
+  header .header-text {
+    /*
+      Position relative to the HEADER height (not the text block height):
+      sit ~25% up from the bottom of the header (i.e. lower in the hero).
+    */
+    position: absolute;
+    left: 50%;
+    bottom: 25%;
+    width: min(100%, var(--page-max));
+    transform: translateX(-50%);
+  }
+}
+
 /* =========================
    Main content
    ========================= */
