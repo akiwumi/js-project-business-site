@@ -21,13 +21,13 @@
   <!-- Navigation -->
   <nav aria-label="Primary">
     <!-- Mobile sidebar -->
-    <ul class="sidebar" role="menu">
+    <ul id="mobile-menu" class="sidebar" role="menu" aria-hidden="true">
       <li>
-        <a href="#" aria-label="Close menu" onclick="hideSidebar()">
+        <button type="button" class="icon-button" aria-label="Close menu" onclick="hideSidebar()">
           <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 96 960 960" aria-hidden="true" focusable="false">
             <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/>
           </svg>
-        </a>
+        </button>
       </li>
       <li><a href="#" role="menuitem">Home</a></li>
       <li><a href="#" role="menuitem">How it works</a></li>
@@ -52,11 +52,11 @@
       <li class="hideOnMobile"><a href="#">Contact</a></li>
       <li class="hideOnMobile"><a href="#">Login</a></li>
       <li class="menu-button">
-        <a href="#" aria-label="Open menu" onclick="showSidebar()">
+        <button type="button" class="icon-button" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false" onclick="showSidebar()">
           <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 96 960 960" aria-hidden="true" focusable="false">
             <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/>
           </svg>
-        </a>
+        </button>
       </li>
     </ul>
     
@@ -268,6 +268,6 @@
     </div>
   </footer>
 
-  <script src="script.js" defer>script.js</script>
+  <script src="script.js" defer></script>
 </body>
 </html>

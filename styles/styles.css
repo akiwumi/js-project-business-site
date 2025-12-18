@@ -66,10 +66,12 @@ nav ul {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin: 0px 10px 0px -60px;
+  margin: 0;
+  padding: 0 10px;
 }
 nav li { height: 50px; }
-nav a {
+nav a,
+nav .icon-button {
   height: 100%;
   padding: 0 30px;
   text-decoration: none;
@@ -77,24 +79,47 @@ nav a {
   align-items: center;
   color: black;
 }
-nav a:hover { background-color: #f0f0f0; }
+nav .icon-button {
+  background: transparent;
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+}
+nav a:hover,
+nav .icon-button:hover { background-color: #f0f0f0; }
 nav li:first-child { margin-right: auto; }
 
 .sidebar {
   position: fixed;
   top: 0; right: 0;
   height: 100vh; width: 250px;
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(12px);
   box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
   list-style: none;
-  display: none;
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
+  overflow-y: auto;
+  z-index: 1000;
+
+  /* closed by default; JS toggles .is-open */
+  transform: translateX(100%);
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 180ms ease, visibility 0s linear 180ms;
 }
 .sidebar li { width: 100%; }
-.sidebar a { width: 100%; }
+.sidebar a,
+.sidebar .icon-button { width: 100%; }
+.sidebar.is-open {
+  transform: translateX(0);
+  visibility: visible;
+  pointer-events: auto;
+  transition: transform 180ms ease;
+}
+.sidebar-open { overflow: hidden; }
 .menu-button { display: none; }
 
 @media (max-width: 800px) {
